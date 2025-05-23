@@ -24,11 +24,14 @@ class CheckLogin
 
         // Ví dụ: kiểm tra route prefix để đảm bảo quyền truy cập
         if ($user->role == User::ROLE_ADMIN && !$request->is('admin/*')) {
-            return redirect('/admin/statistic');
+            return redirect('/admin/concept-category');
         }
 
         if ($user->role === User::ROLE_STAFF && !$request->is('staff/*')) {
             return redirect('/staff/work-schedule');
+        }
+        if ($user->role === User::ROLE_CLIENT && !$request->is('clients/*')) {
+            return redirect('/clients/home');
         }
         return $next($request);
     }

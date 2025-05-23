@@ -4,9 +4,11 @@
         color: white;
     }
 
+
     ul li a:hover {
         color: #a8e6cf;
     }
+
 
     .footer-menu {
         margin-top: 10;
@@ -16,21 +18,29 @@
         list-style: none;
         /* nếu bạn không muốn dấu chấm tròn */
     }
+    .mar-left-15 {
+        margin-left: 15px;
+    }
 </style>
+
+
 
 
 <div id="footerr" class="col-md-12">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 text-center">
                 <h3>About Us</h3>
-                <p> 4Views Studio là viện ảnh lớn ở Tp.Hà Nội, chúng tôi mang đến cho quý khách 
-                    đầy đủ các dịch vụ chụp hình hiện có mặt trên thị trường. Chúng tôi có 
-                    các cơ sở chính và cơ sở liên kết trên địa bàn Tp.Hà Nội để giúp quý khách 
-                    thuận tiện trong việc đi lại và lựa chọn concept chụp ưng ý nhất. Hãy đến 
-                    với 4Views Studio để cảm nhận điều đó !!!</p>
+                <p>
+                4Views Studio – viện ảnh hàng đầu tại Hà Nội. <br>
+                Cung cấp đa dạng dịch vụ chụp ảnh chuyên nghiệp. <br>
+                Có nhiều cơ sở, dễ dàng di chuyển, lựa chọn. <br>
+                Hãy đến 4Views Studio để cảm nhận sự khác biệt!
+                </p>
+
+
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 text-center">
                 <h3>Menu</h3>
                 <ul class="footer-menu">
                     <li><a href="{{ url('clients/home') }}">Trang chủ</a></li>
@@ -38,23 +48,24 @@
                     <li><a href="{{ url('clients/concept') }}">Gói chụp hình</a></li>
                     <li><a href="{{ url('clients/booking') }}">Booking</a></li>
                     <li><a href="{{ url('clients/contact') }}">Liên hệ</a></li>
-
                 </ul>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 text-center">
                 <h3>Contact</h3>
                 <ul class="footer-menu">
                     <li>Hotline: (+84) 0123456789</li>
                     <li>Email: hbdiep2004@gmail.com</li>
                     <li><a href="{{ url('clients/home') }}">Website: 4Views Studio</a></li>
 
+
                 </ul>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 text-center">
                 <h3>My Account</h3>
                 <ul class="footer-menu">
                     <li><a href="/auth">Login</a></li>
                     <li><a href="/auth">Register</a></li>
+
 
                 </ul>
             </div>
@@ -79,9 +90,10 @@
                 </div>
             </div>
 
+
         </div>
     </div>
-    
+   
     <div class="col-md-12">
         <hr>
         <div class="col-md-12 text-center">
@@ -90,4 +102,6 @@
         <hr>
     </div>
 
+
 </div>
+

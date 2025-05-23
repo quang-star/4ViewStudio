@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        
         View::composer('clients.layouts.header', function ($view) {
             $concepts = Concept::all();
     
@@ -36,6 +37,25 @@ class AppServiceProvider extends ServiceProvider
     
             $view->with('user_name', $lastName);
         });
+
+//         // Composer cho client nếu URL chứa /client/ hoặc /clients/
+// if (Request::is('client/*') || Request::is('clients/*')) {
+//     View::composer('clients.layouts.header', function ($view) {
+//         $concepts = Concept::all();
+//         $view->with('concepts_header', $concepts);
+//     });
+// }
+
+// // Composer cho staff nếu URL chứa /staff/
+// if (Request::is('staff/*')) {
+//     View::composer('staff.layouts.sidebar', function ($view) {
+//         $userId = session('user_id');
+//         $user = \App\Models\User::find($userId);
+
+//         $lastName = $user ? collect(explode(' ', trim($user->name)))->last() : '';
+//         $view->with('user_name', $lastName);
+//     });
+// }
 
     }
 }

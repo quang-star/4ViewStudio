@@ -39,11 +39,11 @@ class AuthController extends Controller
             } else if ($role == User::ROLE_STAFF) {
                 // role = 1 is staff
                 return redirect('/staff/work-schedule');
-            } else {
-                // role = 2 is admin
+            } else if ($role == User::ROLE_CLIENT) {
                 return redirect('/clients/home');
             }
         } else {
+             session(['showLogin' => false]);
             return redirect('/auth')->with('error', 'Email hoặc mật khẩu không đúng.');
         }
     }
@@ -55,11 +55,13 @@ class AuthController extends Controller
 
     public function postRegister(Request $request)
     {
+       
         $param = $request->all();
 
         if ($request->input('action') === 'verify') {
             // ✅ Bước xác minh mã
             if ($param['verification_code'] != session('verify_code')) {
+                 session(['showLogin' => true]);
                 return redirect('/auth')->with('error', 'Mã xác nhận không đúng')->with('singup', true);
             }
 
@@ -79,11 +81,13 @@ class AuthController extends Controller
         }
         // ✅ Bước đăng ký lần đầu
         if ($param['password'] != $param['re_password']) {
+            session(['showLogin' => true]);
             return redirect('/auth')->with('error', 'Mật khẩu không khớp');
         }
 
         $checkEmail = User::where('email', $param['email'])->exists();
         if ($checkEmail) {
+            session(['showLogin' => true]);
             return redirect('/auth')->with('error', 'Email đã tồn tại');
         }
 
@@ -111,6 +115,7 @@ class AuthController extends Controller
 
 public function forgotPassword()
 {
+    
     return view('clients.forgot');
 }
 

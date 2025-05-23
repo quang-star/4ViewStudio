@@ -7,6 +7,8 @@
         @endif
 
 
+
+
         @if (session('error'))
             <div class="alert alert-danger" id="alert-error">
                 {{ session('error') }}
@@ -17,14 +19,17 @@
         <form action="{{ url('/forgot') }}" method="POST" id="form-forgot">
             @csrf
 
+
             <label for="chk" aria-hidden="true">Khôi phục mật khẩu</label>
+
 
             {{-- Email --}}
             <input type="email" name="email" placeholder="Email" required
                 value="{{ old('email', session('temp_user_data.email') ?? '') }}">
 
+
             {{-- Nếu đang yêu cầu mã xác minh --}}
-            @if (session('forgot') && !session('new_password'))
+            @if (session(key: 'forgot') && !session('new_password'))
                 <input type="text" name="verification_code" placeholder="Nhập mã xác nhận" maxlength="6" required>
                 <input type="hidden" name="action" value="verify">
             @elseif (session('new_password'))
@@ -37,8 +42,9 @@
                 <input type="hidden" name="action" value="send_code">
             @endif
 
+
             <button type="submit">Tiếp tục</button>
-            <div class="form-group">
+            <div class="form-group login-back">
                 <a href="{{ url('/auth') }}" class="btn btn-link">Quay lại đăng nhập</a>
             </div>
         </form>
@@ -54,14 +60,18 @@
         min-height: 100vh;
         font-family: 'Jost', sans-serif;
         background: linear-gradient(to bottom, #f5e4e6,#a2d1cc, #f1f4c3);
+    }
 
 
+    .login-back {
+        margin-left: 11vh;
+        margin-top: 5vh;
     }
 
 
     .auth-container .main {
         width: 420px;
-        height: 600px;
+        height: 490px;
         background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center / cover;
         border-radius: 12px;
         box-shadow: 6px 24px 60px #000;
@@ -69,9 +79,13 @@
     }
 
 
+
+
     .auth-container #chk {
         display: none;
     }
+
+
 
 
     .auth-container .signup {
@@ -81,9 +95,11 @@
     }
 
 
+
+
     .auth-container label {
         color: #3aa89b;
-        font-size: 2.8em;
+        font-size: 2em;
         justify-content: center;
         display: flex;
         margin: 60px;
@@ -91,6 +107,8 @@
         cursor: pointer;
         transition: .5s ease-in-out;
     }
+
+
 
 
     .auth-container input {
@@ -128,10 +146,14 @@
     }
 
 
+
+
     .auth-container button:hover {
         /* background: #6d44b8; */
         background-color: #5fc1b3;
     }
+
+
 
 
     .auth-container .login {
@@ -143,6 +165,8 @@
     }
 
 
+
+
     .auth-container .login label {
         /* color: #573b8a; */
         color: #3aa89b;
@@ -150,14 +174,20 @@
     }
 
 
+
+
     .auth-container #chk:checked ~ .login {
         transform: translateY(-570px);
     }
 
 
+
+
     .auth-container #chk:checked ~ .login label {
         transform: scale(1);    
     }
+
+
 
 
     .auth-container #chk:checked ~ .signup label {
@@ -166,8 +196,14 @@
 </style>
 
 
+
+
 @endsection
 
 
 
+
+
+
  
+
